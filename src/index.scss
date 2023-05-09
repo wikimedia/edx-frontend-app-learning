@@ -21,9 +21,10 @@
       display: block;
       box-sizing: content-box;
       position: relative;
-      top: 0.1em;
-      height: 1.75rem;
+      top: -0.09em;
+      height: 2.25rem;
       margin-right: 1rem;
+      margin-left: -1.8rem;
       img {
         display: block;
         height: 100%;
@@ -372,7 +373,9 @@
 @import "course-home/progress-tab/grades/course-grade/GradeBar.scss";
 @import "courseware/course/course-exit/CourseRecommendations";
 
+@import "mixins-breakpoints.scss";
 @import "assets/styles/custom-fonts.scss";
+@import "generic/footer/footer.scss";
 
 /** [MM-P2P] Experiment */
 @import "experiments/mm-p2p/index.scss";
