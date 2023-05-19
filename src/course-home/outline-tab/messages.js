@@ -76,7 +76,7 @@ const messages = defineMessages({
   },
   start: {
     id: 'learning.outline.start',
-    defaultMessage: 'Start Course',
+    defaultMessage: 'Start course',
   },
   tools: {
     id: 'learning.outline.tools',
@@ -186,7 +186,7 @@ const messages = defineMessages({
   },
   expiringSoonProctoringMessage: {
     id: 'learning.proctoringPanel.message.expiringSoon',
-    defaultMessage: 'Your onboarding profile has been approved in another course. However, your onboarding status is expiring soon. Please complete onboarding again to ensure that you will be able to continue taking proctored exams.',
+    defaultMessage: 'Your onboarding profile has been approved. However, your onboarding status is expiring soon. Please complete onboarding again to ensure that you will be able to continue taking proctored exams.',
   },
   proctoringPanelGeneralInfo: {
     id: 'learning.proctoringPanel.generalInfo',
