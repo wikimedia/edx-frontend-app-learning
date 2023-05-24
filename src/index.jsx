@@ -10,7 +10,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Switch } from 'react-router-dom';
 
-import { messages as footerMessages } from 'edx-frontend-component-footer';
+import { messages as footerMessages } from '@edx/frontend-component-footer';
 
 import appMessages from './i18n';
 import { UserMessagesProvider } from './generic/user-messages';
