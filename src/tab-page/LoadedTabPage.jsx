@@ -15,7 +15,6 @@ import InstructorToolbar from '../instructor-toolbar';
 import useEnrollmentAlert from '../alerts/enrollment-alert';
 import useLogistrationAlert from '../alerts/logistration-alert';
 
-
 function LoadedTabPage({
   activeTabSlug,
   children,
@@ -36,22 +35,22 @@ function LoadedTabPage({
   // breadcrumbs when they are visible.
   const logistrationAlert = useLogistrationAlert(courseId);
   const enrollmentAlert = useEnrollmentAlert(courseId);
-  
+
   const activeTab = tabs.filter(tab => tab.slug === activeTabSlug)[0];
-  
+
   const streakLengthToCelebrate = celebrations && celebrations.streakLengthToCelebrate;
   const StreakDiscountCouponEnabled = celebrations && celebrations.streakDiscountEnabled && verifiedMode;
   const [isStreakCelebrationOpen,, closeStreakCelebration] = useToggle(streakLengthToCelebrate);
-  
-  const { courseId: courseIdFromUrl } = useParams();
-  const [courseFont, setCourseFont] = useState("")
 
-  useEffect(()=>{
-    let url = `${getConfig().LMS_BASE_URL}/wikimedia_general/api/v0/wiki_metadata/${courseIdFromUrl}`;
-    getAuthenticatedHttpClient().get(url).then(({data})=>{
-      setCourseFont(data.course_font)
-    })
-  },[courseIdFromUrl])
+  const { courseId: courseIdFromUrl } = useParams();
+  const [courseFont, setCourseFont] = useState('');
+
+  useEffect(() => {
+    const url = `${getConfig().LMS_BASE_URL}/wikimedia_general/api/v0/wiki_metadata/${courseIdFromUrl}`;
+    getAuthenticatedHttpClient().get(url).then(({ data }) => {
+      setCourseFont(data.course_font);
+    });
+  }, [courseIdFromUrl]);
 
   return (
     <>
