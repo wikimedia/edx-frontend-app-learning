@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@edx/brand": "npm:@edly-io/wikimedia-brand-openedx@1.0.0",
-    "@edx/frontend-component-footer": "npm:@edly-io/wikimedia-frontend-component-footer@^2.0.1",
+    "@edx/frontend-component-footer": "npm:@edly-io/wikimedia-frontend-component-footer@2.0.4",
     "@edx/frontend-enterprise-utils": "1.1.1",
     "@edx/frontend-lib-special-exams": "1.14.1",
     "@edx/frontend-platform": "1.14.3",
