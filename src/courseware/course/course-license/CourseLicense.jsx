@@ -1,4 +1,5 @@
 import React from 'react';
+import { getConfig } from '@edx/frontend-platform';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -105,6 +106,7 @@ function parseLicense(license) {
 
 function CourseLicense({
   license,
+  courseId,
   intl,
 }) {
   const renderAllRightsReservedLicense = () => (
@@ -119,7 +121,7 @@ function CourseLicense({
       className="text-decoration-none text-gray-500"
       rel="license noopener noreferrer"
       target="_blank"
-      href={`https://creativecommons.org/licenses/${activeCreativeCommonsLicenseTags.join('-')}/${version}/`}
+      href={`${getConfig().LMS_BASE_URL}/courses/${courseId}/about`}
     >
       <span className="sr-only">
         {intl.formatMessage(messages['learn.course.license.creativeCommons.terms.preamble'])}&nbsp;
@@ -133,10 +135,9 @@ function CourseLicense({
           <FontAwesomeIcon aria-hidden="true" className="mr-1" icon={CreativeCommonsLicenseTags[tag].icon} />
         </span>
       ))}
-      {intl.formatMessage(messages['learn.course.license.creativeCommons.text'])}
+      {activeCreativeCommonsLicenseTags.includes('sa') ? `${intl.formatMessage(messages['learn.course.license.creativeCommons.shareAlike.text'])} ${version}` : intl.formatMessage(messages['learn.course.license.creativeCommons.text'])}
     </a>
   );
-
   const [licenseType, licenseOptions, licenseVersion] = parseLicense(license);
 
   return (
@@ -152,6 +153,7 @@ function CourseLicense({
 
 CourseLicense.propTypes = {
   license: PropTypes.string,
+  courseId: PropTypes.string.isRequired,
   intl: intlShape.isRequired,
 };
 

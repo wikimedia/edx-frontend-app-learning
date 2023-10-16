@@ -249,7 +249,7 @@ function Sequence({
         >
           {defaultContent}
         </SequenceExamWrapper>
-        <CourseLicense license={course.license || undefined} />
+        <CourseLicense license={course.license || undefined} courseId={courseId} />
       </div>
     );
   }

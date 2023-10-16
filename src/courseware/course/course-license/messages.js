@@ -40,7 +40,12 @@ const messages = defineMessages({
   'learn.course.license.creativeCommons.text': {
     id: 'learn.course.license.creativeCommons.text',
     defaultMessage: 'Some Rights Reserved',
-    description: 'License text shown when using all Creative Commons license types.',
+    description: 'License text shown when using Creative Commons license types.',
+  },
+  'learn.course.license.creativeCommons.shareAlike.text': {
+    id: 'learn.course.license.creativeCommons.shareAlike.text',
+    defaultMessage: 'CC-by-sa',
+    description: 'License text shown when using share-alike Creative Commons license types.',
   },
 });
 
