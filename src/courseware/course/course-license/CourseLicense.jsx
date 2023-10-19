@@ -42,7 +42,7 @@ function parseLicense(license) {
   if (!license) {
     // Default to All Rights Reserved if no license
     // is detected
-    return ['all-rights-reserved', {}];
+    return ['creative-commons', { by: true, sa: true }];
   }
 
   // Search for a colon character denoting the end
@@ -158,7 +158,7 @@ CourseLicense.propTypes = {
 };
 
 CourseLicense.defaultProps = {
-  license: 'all-rights-reserved',
+  license: 'creative-commons: ver=4.0 BY SA',
 };
 
 export default injectIntl(CourseLicense);
