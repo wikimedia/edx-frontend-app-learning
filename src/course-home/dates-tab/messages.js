@@ -17,6 +17,10 @@ const messages = defineMessages({
     id: 'learning.dates.title',
     defaultMessage: 'Important dates',
   },
+  due: {
+    id: 'learning.dates.due',
+    defaultMessage: 'due',
+  },
   today: {
     id: 'learning.dates.badge.today',
     defaultMessage: 'Today',
