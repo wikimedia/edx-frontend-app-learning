@@ -17,6 +17,8 @@ import { useModel } from '../../../generic/model-store';
 import { getBadgeListAndColor } from './badgelist';
 import { isLearnerAssignment } from '../utils';
 
+import messages from '../messages';
+
 function Day({
   date,
   first,
@@ -86,7 +88,7 @@ function Day({
                   <span className="font-weight-bold">{item.assignmentType && `${item.assignmentType}: `}{title}</span>
                   {showDueDateTime && (
                     <span>
-                      <span className="mx-1">due</span>
+                      <span className="mx-1">{intl.formatMessage(messages.due)}</span>
                       <FormattedTime
                         value={date}
                         timeZoneName="short"
