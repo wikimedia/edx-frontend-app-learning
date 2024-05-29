@@ -29,8 +29,10 @@ import { fetchDatesTab, fetchOutlineTab, fetchProgressTab } from './course-home/
 import { fetchCourse } from './courseware/data';
 import initializeStore from './store';
 import NoticesProvider from './generic/notices';
+import { handleRtl } from './utils';
 
 subscribe(APP_READY, () => {
+  handleRtl();
   ReactDOM.render(
     <AppProvider store={initializeStore()}>
       <NoticesProvider>
@@ -81,6 +83,7 @@ subscribe(APP_READY, () => {
       </NoticesProvider>
     </AppProvider>,
     document.getElementById('root'),
+
   );
 });
 
