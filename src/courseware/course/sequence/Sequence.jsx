@@ -155,7 +155,7 @@ function Sequence({
   };
 
   const defaultContent = (
-    <div className="sequence-container" style={{ display: 'inline-flex', flexDirection: 'row' }}>
+    <div className="sequence-container" style={{ flexDirection: 'row' }}>
       <div className={classNames('sequence', { 'position-relative': shouldDisplayNotificationTrigger })} style={{ width: '100%' }}>
         <SequenceNavigation
           sequenceId={sequenceId}
