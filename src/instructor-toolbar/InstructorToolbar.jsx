@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { getConfig } from '@edx/frontend-platform';
 
+import { getShowLanguageWidget } from './language-widget/data/api';
+import LanguageWidget from './language-widget';
 import { ALERT_TYPES, AlertList } from '../generic/user-messages';
 import Alert from '../generic/user-messages/Alert';
 import MasqueradeWidget from './masquerade-widget';
@@ -46,8 +48,13 @@ export default function InstructorToolbar(props) {
   // NOTE: This was originally added because of the CourseExit page redirect. Once that page stops
   //   doing a redirect because a CourseExit experience exists for all learners, this could be removed
   const [didMount, setDidMount] = useState(false);
+  const [showLanguageWidget, setShowLanguageWidget] = useState(false);
+
   useEffect(() => {
     setDidMount(true);
+    getShowLanguageWidget()
+      .then((show) => setShowLanguageWidget(show.languageSelectorIsEnabled))
+      .catch((error) => console.error('Unable to get showLanguageWidget', error));
     // Returning this function here will run setDidMount(false) when this component is unmounted
     return () => setDidMount(false);
   });
@@ -106,6 +113,7 @@ export default function InstructorToolbar(props) {
               <a className="btn btn-inverse-outline-primary" href={urlInsights}>Insights</a>
             </span>
           )}
+          {showLanguageWidget && <LanguageWidget />}
         </div>
       </div>
       {masqueradeErrorMessage && (
