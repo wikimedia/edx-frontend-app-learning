@@ -151,7 +151,7 @@ export function fetchCourse(courseId) {
         } = mergeLearningSequencesWithCourseBlocks(
           learningSequencesOutlineResult.value,
           courseBlocksResult.value,
-          courseMetadataResult.value.isMasquerading,
+          courseMetadataResult.value?.isMasquerading,
         );
 
         // This updates the course with a sectionIds array from the blocks data.
