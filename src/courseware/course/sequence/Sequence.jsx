@@ -227,7 +227,7 @@ const Sequence = ({
         >
           {defaultContent}
         </SequenceExamWrapper>
-        <CourseLicense license={license || undefined} />
+        <CourseLicense license={license || undefined} courseId={courseId} />
       </div>
     );
   }
