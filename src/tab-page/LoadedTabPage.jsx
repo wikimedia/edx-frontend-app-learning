@@ -50,9 +50,9 @@ const LoadedTabPage = ({
 
   useEffect(() => {
     const url = `${getConfig().LMS_BASE_URL}/wikimedia_general/api/v0/wiki_metadata/${courseIdFromUrl}`;
-    getAuthenticatedHttpClient().get(url).then(({ data }) => {
-      setCourseFont(data.course_font);
-    });
+    getAuthenticatedHttpClient().get(url)
+      .then(({ data }) => setCourseFont(data.course_font))
+      .catch(() => setCourseFont(''));
   }, [courseIdFromUrl]);
 
   return (
