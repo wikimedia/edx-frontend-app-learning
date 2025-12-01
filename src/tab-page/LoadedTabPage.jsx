@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 import { getConfig } from '@edx/frontend-platform';
 import { useToggle } from '@openedx/paragon';
+import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 
 import { CourseTabsNavigation } from '../course-tabs';
 import { useModel } from '../generic/model-store';
@@ -43,6 +45,16 @@ const LoadedTabPage = ({
   const streakDiscountCouponEnabled = celebrations && celebrations.streakDiscountEnabled && verifiedMode;
   const [isStreakCelebrationOpen,, closeStreakCelebration] = useToggle(streakLengthToCelebrate);
 
+  const { courseId: courseIdFromUrl } = useParams();
+  const [courseFont, setCourseFont] = useState('');
+
+  useEffect(() => {
+    const url = `${getConfig().LMS_BASE_URL}/wikimedia_general/api/v0/wiki_metadata/${courseIdFromUrl}`;
+    getAuthenticatedHttpClient().get(url)
+      .then(({ data }) => setCourseFont(data.course_font))
+      .catch(() => setCourseFont(''));
+  }, [courseIdFromUrl]);
+
   return (
     <>
       <ProductTours
@@ -71,7 +83,7 @@ const LoadedTabPage = ({
         streakDiscountCouponEnabled={streakDiscountCouponEnabled}
         verifiedMode={verifiedMode}
       />
-      <main className="d-flex flex-column flex-grow-1">
+      <main id="main-content" className={`d-flex flex-column flex-grow-1 ${courseFont}`}>
         <AlertList
           topic="outline"
           className="mx-5 mt-3"
