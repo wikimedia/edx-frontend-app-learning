@@ -1,5 +1,4 @@
 import React from 'react';
-import { getConfig } from '@edx/frontend-platform';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -106,7 +105,6 @@ function parseLicense(license) {
 
 const CourseLicense = ({
   license,
-  courseId,
 }) => {
   const intl = useIntl();
   const renderAllRightsReservedLicense = () => (
@@ -121,7 +119,7 @@ const CourseLicense = ({
       className="text-decoration-none text-gray-500"
       rel="license noopener noreferrer"
       target="_blank"
-      href={`${getConfig().LMS_BASE_URL}/courses/${courseId}/about`}
+      href={`https://creativecommons.org/licenses/${activeCreativeCommonsLicenseTags.join('-')}/${version}/`}
     >
       <span className="sr-only">
         {intl.formatMessage(messages['learn.course.license.creativeCommons.terms.preamble'])}&nbsp;
@@ -159,7 +157,6 @@ const CourseLicense = ({
 
 CourseLicense.propTypes = {
   license: PropTypes.string,
-  courseId: PropTypes.string.isRequired,
 };
 
 CourseLicense.defaultProps = {
